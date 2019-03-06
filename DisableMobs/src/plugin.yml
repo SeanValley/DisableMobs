@@ -1,0 +1,7 @@
+name: DisableMobs
+main: com.Jakeob.DisableMobs.DisableMobs
+version: 2.0
+commands:
+   killmobs:
+      description: Kill all mobs in a world.
+      usage: Usage /<command> <world>

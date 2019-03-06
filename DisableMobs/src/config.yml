@@ -1,0 +1,35 @@
+world:
+  bat: true
+  blaze: true
+  cave_spider: true
+  chicken: true
+  cow: true
+  creeper: false
+  ender_dragon: true
+  enderman: true
+  ghast: true
+  horse: true
+  iron_golem: true
+  magma_cube: true
+  mushroom_cow: true
+  ocelot: true
+  pig: true
+  pig_zombie: true
+  sheep: true
+  silverfish: true
+  skeleton: true
+  slime: true
+  snowman: true
+  spider: true
+  squid: true
+  villager: true
+  witch: true
+  wither: true
+  wolf: true
+  zombie: true
+
+world_nether:
+  blaze: true
+  ghast: true
+  magma_cube: true
+  pig_zombie: true

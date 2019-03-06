@@ -86,15 +86,15 @@ public class DisableMobs extends JavaPlugin {
 				if(world != null) {
 					List<Entity> entities = world.getEntities();
 					if(entities != null && entities.size() > 0) {
-						for (Entity e : world.getEntities()) {
-							if (e.getType() != EntityType.PLAYER) {
-								e.remove();
+						for (Entity entity : world.getEntities()) {
+							if (entity.getType() != EntityType.PLAYER && getConfig().contains(worldName + "." + entity.getType().toString().toLowerCase())) {
+								entity.remove();
 								amountRemoved++;
 							}
 						}
 						
 						if(isPlayer) {
-							((Player) sender).sendMessage(ChatColor.GREEN + "Removed " + amountRemoved + " from " + worldName + ".");
+							((Player) sender).sendMessage(ChatColor.GREEN + "Removed " + amountRemoved + " mobs from " + worldName + ".");
 							DisableMobs.log.info("test. " + amountRemoved);
 						}else {
 							DisableMobs.log.info("Removed " + amountRemoved + " mobs from " + worldName + ".");
@@ -109,7 +109,7 @@ public class DisableMobs extends JavaPlugin {
 					}
 				}else {					
 					if(isPlayer) {
-						((Player) sender).sendMessage(ChatColor.GREEN + "World: " + worldName + " doesn't exist.");
+						((Player) sender).sendMessage(ChatColor.RED + "World: " + worldName + " doesn't exist.");
 					}else {
 						DisableMobs.log.info("World: " + worldName + " doesn't exist.");
 					}

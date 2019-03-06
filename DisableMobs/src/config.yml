@@ -3,30 +3,57 @@ world:
   blaze: true
   cave_spider: true
   chicken: true
+  cod: true
   cow: true
-  creeper: false
+  creeper: true
+  dolphin: true
+  donkey: true
+  drowned: true
+  elder_guardian: true
   ender_dragon: true
   enderman: true
+  endermite: true
+  evoker: true
   ghast: true
+  giant: true
+  guardian: true
   horse: true
+  husk: true
+  illusioner: true
   iron_golem: true
+  llama: true
   magma_cube: true
+  mule: true
   mushroom_cow: true
   ocelot: true
+  parrot: true
+  phantom: true
   pig: true
   pig_zombie: true
+  polar_bear: true
+  pufferfish: true
+  rabbit: true
+  salmon: true
   sheep: true
+  shulker: true
   silverfish: true
   skeleton: true
   slime: true
   snowman: true
   spider: true
   squid: true
+  stray: true
+  tropical_fish: true
+  turtle: true
+  vex: true
   villager: true
   witch: true
   wither: true
+  wither_skeleton: true
   wolf: true
   zombie: true
+  zombie_horse: true
+  zombie_villager: true
 
 world_nether:
   blaze: true

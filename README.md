@@ -24,31 +24,62 @@ Supported Creatures:
 * Blaze
 * Cave Spider
 * Chicken
+* Cod
 * Cow
 * Creeper
+* Dolphin
+* Donkey
+* Drowned
+* Elder Guardian
 * Ender Dragon
 * Enderman
+* Endermite
+* Evoker
 * Ghast
-* Golem
+* Giant
+* Guardian
 * Horse
+* Husk
+* Illusioner
+* Iron Golem
+* Llama
 * Magma Cube
+* Mule
 * Mushroom Cow
 * Ocelot
+* Parrot
+* Phantom
 * Pig
-* Pigman
+* Pig Zombie
+* Polar Bear
+* Pufferfish
+* Rabbit
+* Salmon
 * Sheep
+* Shulker
 * SilverFish
 * Skeleton
 * Slime
 * Snowman
 * Spider
 * Squid
+* Stray
+* Tropical Fish
+* Turtle
+* Vex
 * Villager
 * Witch
 * Wither
+* Wither Skeleton
 * Wolf
 * Zombie
+* Zombie Horse
+* Zombie Villager
 
 Commands:
 
-	/killmobs [world] - Kills all mobs in a given world. Ops can use it, but I'll add a permissions node soon.
+	/killmobs [world] - Kills all mobs in a given world.
+	
+Permissions:
+
+	'dm.kill' - Allows players to use killmobs command (also available to op'd players)

@@ -60,3 +60,4 @@ world_nether:
   ghast: true
   magma_cube: true
   pig_zombie: true
+  wither_skeleton: true

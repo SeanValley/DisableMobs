@@ -8,6 +8,8 @@ Recommended Build:
 
 	Version: 2.0 for Bukkit build 1.13.2
 
+[Spigot Page](https://www.spigotmc.org/resources/disablemobs.65441/)
+
 Features:
 
 Allows a bukkit server owner to choose exactly which creatures can spawn and which are blocked from spawning.
@@ -27,3 +29,9 @@ Commands:
 Permissions:
 
 	'dm.kill' - Allows players to use killmobs command (also available to op'd players)
+
+Planned Features:
+
+	Edit config via commands in-game
+	Changing spawn rates of creatures
+	Allowing spawning of creatures that don't spawn naturally

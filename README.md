@@ -18,63 +18,7 @@ This bukkit plugin will easily allow the server owner to choose which mobs will 
 
 Original plugin: [DisableMobs 1.0](https://dev.bukkit.org/projects/disablemobsbukkit)
 
-Supported Creatures:
-
-* Bat
-* Blaze
-* Cave Spider
-* Chicken
-* Cod
-* Cow
-* Creeper
-* Dolphin
-* Donkey
-* Drowned
-* Elder Guardian
-* Ender Dragon
-* Enderman
-* Endermite
-* Evoker
-* Ghast
-* Giant
-* Guardian
-* Horse
-* Husk
-* Illusioner
-* Iron Golem
-* Llama
-* Magma Cube
-* Mule
-* Mushroom Cow
-* Ocelot
-* Parrot
-* Phantom
-* Pig
-* Pig Zombie
-* Polar Bear
-* Pufferfish
-* Rabbit
-* Salmon
-* Sheep
-* Shulker
-* SilverFish
-* Skeleton
-* Slime
-* Snowman
-* Spider
-* Squid
-* Stray
-* Tropical Fish
-* Turtle
-* Vex
-* Villager
-* Witch
-* Wither
-* Wither Skeleton
-* Wolf
-* Zombie
-* Zombie Horse
-* Zombie Villager
+Supported Creatures: [Found Here](https://github.com/SeanValley/DisableMobs/blob/master/SupportedCreatures)
 
 Commands:
 

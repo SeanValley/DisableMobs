@@ -95,14 +95,12 @@ public class DisableMobs extends JavaPlugin {
 						
 						if(isPlayer) {
 							((Player) sender).sendMessage(ChatColor.GREEN + "Removed " + amountRemoved + " mobs from " + worldName + ".");
-							DisableMobs.log.info("test. " + amountRemoved);
 						}else {
 							DisableMobs.log.info("Removed " + amountRemoved + " mobs from " + worldName + ".");
 						}
 					}else {
 						if(isPlayer) {
 							((Player) sender).sendMessage(ChatColor.GREEN + "Removed 0 mobs from " + worldName + ".");
-							DisableMobs.log.info("test. " + amountRemoved);
 						}else {
 							DisableMobs.log.info("Removed 0 mobs from " + worldName + ".");
 						}

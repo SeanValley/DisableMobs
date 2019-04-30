@@ -38,7 +38,7 @@ public class DisableMobs extends JavaPlugin {
 	public void loadConfiguration() {
 		getConfig().options().header(
 		  "###############################################\n"
-		+ "Disable Mobs 2.0\n"
+		+ "Disable Mobs 2.1\n"
 		+ "For Bukkit Build 1.13.2 R0.1\n"
 		+ "By: Jakeob22\n"
 		+ "Select 'true' if you want them to spawn\n"
@@ -50,6 +50,7 @@ public class DisableMobs extends JavaPlugin {
 		saveConfig();
 	}
   
+	//clears mobs set to false, returns how many mobs were cleared
 	private int clearUnwantedMobs() {
 		int amountRemoved = 0;
 		List<World> worlds = this.getServer().getWorlds();
@@ -58,7 +59,7 @@ public class DisableMobs extends JavaPlugin {
 			for(Entity entity : entities) {
 				String typeName = entity.getType().toString().toLowerCase();
 				boolean allowed = this.getConfig().getBoolean(world + "." + typeName);
-				if(!allowed) {
+				if(!allowed && !typeName.equalsIgnoreCase("player")) {
 					entity.remove();
 					amountRemoved++;
 				}
@@ -67,57 +68,139 @@ public class DisableMobs extends JavaPlugin {
 	  
 		return amountRemoved;
 	}
+	
+	//clears specified mobs, returns how many mobs were cleared
+	private int clearMob(String mobName, String worldName) {
+		World world = this.getServer().getWorld(worldName);
+		if(world != null) {
+			int amountRemoved = 0;
+			List<Entity> entities = world.getEntities();
+			for(Entity entity : entities) {
+				String typeName = entity.getType().toString().toLowerCase();
+				if(typeName.equalsIgnoreCase(mobName)) {
+					entity.remove();
+					amountRemoved++;
+				}
+			}
+			return amountRemoved;
+		}
+		return 0;
+	}
+	
+	//sets specified mob to specified setting in config, returns how many mobs were removed
+	private int setConfig(String mobName, String worldName, boolean setting) {
+		this.getConfig().set(worldName + "." + mobName, setting);
+		this.saveConfig();
+		
+		if(setting == false) {
+			return clearMob(mobName, worldName);
+		}
+		
+		return 0;
+	}
   
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		boolean isPlayer = sender instanceof Player;
-		boolean hasPermission = true;
+		boolean hasKillPermission = true;
+		boolean hasConfigPermission = true;
 		
 		if(isPlayer) {
 			Player player = (Player) sender;
-			if(!player.isOp() && !player.hasPermission("dm.kill")) {
-				hasPermission = false;
+			if(!player.isOp()) {
+				if(!player.hasPermission("dm.kill")) {
+					hasKillPermission = false;
+				}
+				
+				if(!player.hasPermission("dm.config")) {
+					hasConfigPermission = false;
+				}
 			}
+			
 		}
-		if ((cmd.getName().equalsIgnoreCase("killmobs")) && hasPermission) {
-			int amountRemoved = 0;
-			if(args.length > 0) {
-				String worldName = args[0];
-				World world = getServer().getWorld(worldName);
-				if(world != null) {
-					List<Entity> entities = world.getEntities();
-					if(entities != null && entities.size() > 0) {
-						for (Entity entity : world.getEntities()) {
-							if (entity.getType() != EntityType.PLAYER && getConfig().contains(worldName + "." + entity.getType().toString().toLowerCase())) {
-								entity.remove();
-								amountRemoved++;
+		
+		if (cmd.getName().equalsIgnoreCase("killmobs")) {
+			if(hasKillPermission) {
+				if(args.length > 0) {
+					String worldName = args[0];
+					World world = getServer().getWorld(worldName);
+					if(world != null) {
+						List<Entity> entities = world.getEntities();
+						if(entities != null && entities.size() > 0) {
+							int amountRemoved = 0;
+							for (Entity entity : world.getEntities()) {
+								if (entity.getType() != EntityType.PLAYER && getConfig().contains(worldName + "." + entity.getType().toString().toLowerCase())) {
+									entity.remove();
+									amountRemoved++;
+								}
+							}
+							
+							if(isPlayer) {
+								((Player) sender).sendMessage(ChatColor.GREEN + "Removed " + amountRemoved + " mobs from " + worldName + ".");
+							}else {
+								DisableMobs.log.info("Removed " + amountRemoved + " mobs from " + worldName + ".");
+							}
+						}else {
+							if(isPlayer) {
+								((Player) sender).sendMessage(ChatColor.GREEN + "Removed 0 mobs from " + worldName + ".");
+							}else {
+								DisableMobs.log.info("Removed 0 mobs from " + worldName + ".");
 							}
 						}
-						
+					}else {					
 						if(isPlayer) {
-							((Player) sender).sendMessage(ChatColor.GREEN + "Removed " + amountRemoved + " mobs from " + worldName + ".");
+							((Player) sender).sendMessage(ChatColor.RED + "World: " + worldName + " doesn't exist.");
 						}else {
-							DisableMobs.log.info("Removed " + amountRemoved + " mobs from " + worldName + ".");
-						}
-					}else {
-						if(isPlayer) {
-							((Player) sender).sendMessage(ChatColor.GREEN + "Removed 0 mobs from " + worldName + ".");
-						}else {
-							DisableMobs.log.info("Removed 0 mobs from " + worldName + ".");
+							DisableMobs.log.info("World: " + worldName + " doesn't exist.");
 						}
 					}
-				}else {					
+				}else {
 					if(isPlayer) {
-						((Player) sender).sendMessage(ChatColor.RED + "World: " + worldName + " doesn't exist.");
+						((Player) sender).sendMessage(ChatColor.RED + "Usage: /killmobs [world]");
 					}else {
-						DisableMobs.log.info("World: " + worldName + " doesn't exist.");
+						DisableMobs.log.info("Usage: killmobs [world]");
 					}
 				}
 			}else {
-				if(isPlayer) {
-					((Player) sender).sendMessage(ChatColor.RED + "You must specify a world to clear.");
+				((Player) sender).sendMessage(ChatColor.RED + "You don't have permission to use this command.");
+			}
+			
+			return true;
+		}else if(cmd.getName().equalsIgnoreCase("setmob")){
+			if(hasConfigPermission) {
+				if(args.length == 3) {
+					if(args[2].equalsIgnoreCase("true") || args[2].equalsIgnoreCase("false")) {
+						boolean setting = Boolean.valueOf(args[2]);
+						int amountRemoved = setConfig(args[0], args[1], setting);
+						
+						if(isPlayer) {
+							((Player) sender).sendMessage(ChatColor.GREEN + "Mob: " + args[0] + " set to " + setting + " for the world: " + args[1]);
+						}else {
+							DisableMobs.log.info("Mob: " + args[0] + " set to " + setting + " for the world: " + args[1]);
+						}
+						
+						if(setting == false) {
+							if(isPlayer) {
+								((Player) sender).sendMessage(ChatColor.GREEN + "Removed " + amountRemoved + " of " + args[0]);
+							}else {
+								DisableMobs.log.info("Removed " + amountRemoved + " of " + args[0]);
+							}
+						}
+					}else {
+						if(isPlayer) {
+							((Player) sender).sendMessage(ChatColor.RED + "Usage: /setmob [mob] [world] [true/false]");
+						}else {
+							DisableMobs.log.info("Usage: setmob [mob] [world] [true/false]");
+						}
+					}
 				}else {
-					DisableMobs.log.info("You must specify a world to clear.");
+					if(isPlayer) {
+						((Player) sender).sendMessage(ChatColor.RED + "Usage: /setmob [mob] [world] [true/false]");
+					}else {
+						DisableMobs.log.info("Usage: setmob [mob] [world] [true/false]");
+					}
 				}
+			}else {
+				((Player) sender).sendMessage(ChatColor.RED + "You don't have permission to use this command.");
 			}
 			return true;
 		}

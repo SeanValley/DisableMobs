@@ -1,7 +1,10 @@
 name: DisableMobs
 main: com.Jakeob.DisableMobs.DisableMobs
-version: 2.0
+version: 2.1
 commands:
    killmobs:
       description: Kill all mobs in a world.
       usage: Usage /<command> [world]
+   setmob:
+      description: Change a mob's settings in the config
+      usage: Usage /<command> [mob] [world] [true/false]

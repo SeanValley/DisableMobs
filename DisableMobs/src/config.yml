@@ -1,7 +1,7 @@
 world:
   bat: true
   blaze: true
-  cat: false
+  cat: true
   cave_spider: true
   chicken: true
   cod: true
@@ -15,7 +15,7 @@ world:
   enderman: true
   endermite: true
   evoker: true
-  fox: false
+  fox: true
   ghast: true
   giant: true
   guardian: true
@@ -28,16 +28,16 @@ world:
   mule: true
   mushroom_cow: true
   ocelot: true
-  panda: false
+  panda: true
   parrot: true
   phantom: true
   pig: true
   pig_zombie: true
-  pillager: false
+  pillager: true
   polar_bear: true
   pufferfish: true
   rabbit: true
-  ravager: false
+  ravager: true
   salmon: true
   sheep: true
   shulker: true
@@ -48,12 +48,12 @@ world:
   spider: true
   squid: true
   stray: true
-  trader_llama: false
+  trader_llama: true
   tropical_fish: true
   turtle: true
   vex: true
   villager: true
-  wandering_trader: false
+  wandering_trader: true
   witch: true
   wither: true
   wither_skeleton: true

@@ -2,6 +2,7 @@ Supported Creatures:
 
 * Bat
 * Blaze
+* Cat
 * Cave Spider
 * Chicken
 * Cod
@@ -15,6 +16,7 @@ Supported Creatures:
 * Enderman
 * Endermite
 * Evoker
+* Fox
 * Ghast
 * Giant
 * Guardian
@@ -27,13 +29,16 @@ Supported Creatures:
 * Mule
 * Mushroom Cow
 * Ocelot
+* Panda
 * Parrot
 * Phantom
 * Pig
 * Pig Zombie
+* Pillager
 * Polar Bear
 * Pufferfish
 * Rabbit
+* Ravager
 * Salmon
 * Sheep
 * Shulker
@@ -44,10 +49,12 @@ Supported Creatures:
 * Spider
 * Squid
 * Stray
+* Trader Llama
 * Tropical Fish
 * Turtle
 * Vex
 * Villager
+* Wandering Trader
 * Witch
 * Wither
 * Wither Skeleton

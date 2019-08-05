@@ -16,9 +16,13 @@ public class DisableMobsEntityListener implements Listener {
 		String world = event.getLocation().getWorld().getName();
 		String typeName = event.getEntityType().toString().toLowerCase();
     
-		boolean allowed = this.plugin.getConfig().getBoolean(world + "." + typeName);
-		if (!allowed) {
-			event.setCancelled(true);
+		boolean containsCreature = this.plugin.getConfig().contains(world + "." + typeName);
+		
+		if(containsCreature){
+			boolean allowed = this.plugin.getConfig().getBoolean(world + "." + typeName);
+			if (!allowed) {
+				event.setCancelled(true);
+			}
 		}
 	}
 }

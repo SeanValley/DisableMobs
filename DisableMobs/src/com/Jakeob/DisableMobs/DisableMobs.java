@@ -38,8 +38,8 @@ public class DisableMobs extends JavaPlugin {
 	public void loadConfiguration() {
 		getConfig().options().header(
 		  "###############################################\n"
-		+ "Disable Mobs 2.1\n"
-		+ "For Bukkit Build 1.13.2 R0.1\n"
+		+ "Disable Mobs 2.2\n"
+		+ "For Bukkit Build 1.14.4\n"
 		+ "By: Jakeob22\n"
 		+ "Select 'true' if you want them to spawn\n"
 		+ "Select 'false' if you don't want them to spawn\n"

@@ -6,10 +6,10 @@ By: Jakeob22
 
 Recommended Build:
 
-	Version: 2.1 for Bukkit build 1.13.2
+	Version: 2.2 for Bukkit build 1.14.4
 
 [Spigot Page](https://www.spigotmc.org/resources/disablemobs.65441/)
-[Download](https://www.spigotmc.org/resources/disablemobs.65441/download?version=271302)
+[Download](https://www.spigotmc.org/resources/disablemobs.65441/download?version=287609/)
 
 Features:
 
